@@ -1,50 +1,532 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YouHaveWorth.org | Your Identity in Christ</title>
+
+<!-- Cross favicon -->
+<link rel="icon" href="data:image/svg+xml,
+%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
+%3Crect width='100' height='100' rx='20' fill='%2345484D'/%3E
+%3Cpath d='M46 15h8v25h19v8H54v37h-8V48H27v-8h19z' fill='white'/%3E
+%3C/svg%3E">
+
 <style>
+:root {
+  --main: #45484D;
+  --accent: #74777D;
+  --light: #F2F2F2;
+  --text: #252525;
+  --card: #FFFFFF;
+}
+
+body.dark {
+  --light: #222427;
+  --text: #F1F1F1;
+  --card: #303237;
+  --accent: #9FA2A8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background: white;
-    font-family: roman;
-}  
-#content {
-    background: blue;
-    min-width: 200px;
-    max-width: 500px;
-    padding: 50px;
-    margin: auto;
-    margin-top: -50px;
-    line-height: 150%;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
 }
-h1 {
-    letter-spacing: 2px;
-    font-size: 16px;
+
+header {
+  background: var(--main);
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.logo small {
+  display: block;
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: normal;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.theme-button {
+  background: white;
+  color: #333;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 65px 7%;
+  background: linear-gradient(120deg, #45484D, #777A80);
+  color: white;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 15px;
+}
+
+.hero .verse {
+  font-size: 1.35rem;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.hero img {
+  width: 45%;
+  max-width: 520px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.button {
+  display: inline-block;
+  background: white;
+  color: #35383C;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+section {
+  padding: 55px 7%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+}
+
+.intro {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.card {
+  background: var(--card);
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #99999944;
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+.scripture {
+  background: var(--main);
+  color: white;
+  text-align: center;
+  padding: 35px 7%;
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.scripture cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.resources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.resources a {
+  background: var(--main);
+  color: white;
+  padding: 14px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.contact {
+  text-align: center;
+}
+
+footer {
+  background: var(--main);
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+}
+
+footer a {
+  color: white;
+  margin: 0 10px;
+}
+
+@media (max-width: 800px) {
+  header {
+    justify-content: center;
     text-align: center;
-}
-h2 {
-    font-size: 14px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    flex-direction: column;
     text-align: center;
+    padding: 40px 6%;
+  }
+
+  .hero img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 40px 6%;
+  }
 }
-h3 {
-    font-size: 12px;
+
+@media (max-width: 450px) {
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
 }
 </style>
-</head>    
+</head>
+
 <body>
-    <div id="content">
-        <h1>Abram Sandoval</h1>
-        <h2>Sophomore in Greenville, South Carolina</h2>
-        
-         <p>Jeusus is King!</p>
-         <p>
-            I am a member of Lakeview Church in Pickens, SC. My favorite website is  
-            <a href="https://mobilehymns.org/">here</a>, and you can email me  
-            <a href="mailto:sgothard@bju.edu">here</a>.
-         </p> 
-         <p>
-            I enjoy long walks on the beach, hiking, and spending time with my daughter.
-         </p>
-        <h3>EDUCATION</h3>
-        Biblical Counseling<br />
-        Bob Jones University <img src="art3.jpg" alt="My picture" width="300">
-    </div>
+
+<header>
+  <div class="logo">
+    ✝ YouHaveWorth.org
+    <small>You are loved. You are valued. You have purpose.</small>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#scripture">Scripture</a>
+    <a href="#resources">Resources</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-button" onclick="toggleTheme()">☀ / ☾</button>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+
+  <div class="hero-text">
+    <h1>You Have Worth</h1>
+
+    <p class="verse">
+      "I will praise thee; for I am fearfully
+      and wonderfully made."
+    </p>
+
+    <p><strong>Psalm 139:14</strong></p>
+
+    <p>
+      Your past does not define you. Your mistakes do not
+      determine your worth. You were created in the image
+      of God, and your life has meaning and purpose.
+      Through Jesus Christ, there is hope, grace,
+      forgiveness, and a new beginning.
+    </p>
+
+    <a href="#scripture" class="button">Discover Your Worth</a>
+  </div>
+
+  <img
+    src="assets/cross-mountain.jpg"
+    alt="Cross standing on a mountain at sunrise"
+  >
+
+</section>
+
+<section id="about">
+
+  <h2 class="section-title">You Were Created With Purpose</h2>
+
+  <p class="intro">
+    YouHaveWorth.org exists to remind people that their identity
+    and worth are not found in the world, but in God. We are
+    created in His image, loved by Him, and invited to know Him
+    through Jesus Christ. I am here to encourage you, share God's
+    Word, and help you discover the hope and purpose found in Christ.
+  </p>
+
+  <div class="cards">
+
+    <article class="card">
+      <h2>Created in His Image</h2>
+      <p>
+        Every human life has value because we are created in
+        the image of God. Your worth is not based on success,
+        possessions, popularity, or the approval of others.
+      </p>
+      <p><strong>Genesis 1:27</strong></p>
+    </article>
+
+    <article class="card">
+      <h2>Loved by God</h2>
+      <p>
+        God demonstrated His love through Jesus Christ. Even
+        though we are sinners, Christ died for us so that
+        we may be reconciled to God.
+      </p>
+      <p><strong>Romans 5:8</strong></p>
+    </article>
+
+    <article class="card">
+      <h2>Made for a Purpose</h2>
+      <p>
+        God has created us in Christ Jesus for good works.
+        Your life is not meaningless. God calls us to walk
+        in faith, love others, and glorify Him.
+      </p>
+      <p><strong>Ephesians 2:10</strong></p>
+    </article>
+
+  </div>
+
+</section>
+
+<div class="scripture" id="scripture">
+
+  "For we are his workmanship, created in Christ Jesus
+  unto good works, which God hath before ordained
+  that we should walk in them."
+
+  <cite>Ephesians 2:10 — KJV</cite>
+
+</div>
+
+<section>
+
+  <h2 class="section-title">Scripture for Your Journey</h2>
+
+  <div class="cards">
+
+    <article class="card">
+      <h2>Psalm 139:14</h2>
+      <p>
+        I will praise thee; for I am fearfully and wonderfully
+        made: marvelous are thy works; and that my soul
+        knoweth right well.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Romans 8:38–39</h2>
+      <p>
+        Nothing can separate those who belong to Christ
+        from the love of God, which is in Christ Jesus our Lord.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>2 Corinthians 5:17</h2>
+      <p>
+        In Christ, we are made a new creation.
+        The old has passed away, and new life has begun.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>John 3:16</h2>
+      <p>
+        God loved the world and gave His only begotten Son,
+        that whoever believes in Him should not perish,
+        but have everlasting life.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Jeremiah 29:11</h2>
+      <p>
+        God reminds His people of His plans, giving them
+        hope and a future.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Romans 8:1</h2>
+      <p>
+        There is no condemnation for those who are in
+        Christ Jesus.
+      </p>
+    </article>
+
+  </div>
+
+</section>
+
+<section id="resources">
+
+  <h2 class="section-title">Grow in the Word</h2>
+
+  <p class="intro">
+    God's Word is our foundation. Take time to read, study,
+    pray, and grow in your relationship with the Lord.
+    You do not have to walk alone.
+  </p>
+
+  <div class="resources">
+
+    <a href="https://www.biblegateway.com/"
+       target="_blank" rel="noopener">
+       Read the Bible
+    </a>
+
+    <a href="https://www.youversion.com/"
+       target="_blank" rel="noopener">
+       Bible Study Resources
+    </a>
+
+    <a href="https://www.gotquestions.org/"
+       target="_blank" rel="noopener">
+       Biblical Questions
+    </a>
+
+  </div>
+
+</section>
+
+<div class="scripture">
+
+  "For I know the thoughts that I think toward you,
+  saith the Lord, thoughts of peace, and not of evil,
+  to give you an expected end."
+
+  <cite>Jeremiah 29:11 — KJV</cite>
+
+</div>
+
+<section class="contact" id="contact">
+
+  <h2 class="section-title">You Don't Have to Walk Alone</h2>
+
+  <p class="intro">
+    Life can be difficult, and sometimes we need someone
+    to listen, pray, encourage us, and remind us of God's Word.
+    My desire is to help you grow in Christ, find hope in Scripture,
+    and discover the value God has given you.
+  </p>
+
+  <a class="button"
+     href="https://www.biblegateway.com/"
+     target="_blank" rel="noopener">
+     Find Hope in God's Word
+  </a>
+
+</section>
+
+</main>
+
+<footer>
+
+  <h2>YouHaveWorth.org</h2>
+
+  <p>You are loved. You are valued. You have purpose.</p>
+
+  <p>Our worth and hope are found in Jesus Christ.</p>
+
+  <p>
+    <a href="#home">Home</a> |
+    <a href="#about">About</a> |
+    <a href="#scripture">Scripture</a> |
+    <a href="#resources">Resources</a> |
+    <a href="#contact">Contact</a>
+  </p>
+
+  <p>&copy; 2026 YouHaveWorth.org</p>
+
+</footer>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
 </body>
 </html>
